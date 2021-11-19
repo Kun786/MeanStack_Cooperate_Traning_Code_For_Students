@@ -1,0 +1,9 @@
+<div class="container">
+<form [formGroup]="GroupForm" (ngSubmit)="onRegister()">
+    <input type="text" name="" id="" formControlName="name" placeholder="Enter The Name">
+    <input type="text" name="" id="" formControlName="age" placeholder="Enter The age">
+    <input type="text" name="" id="" formControlName="address" placeholder="Entera address">
+    <button type="submit">Submit Value</button>
+</form>
+<app-child [OutGoingValue]="Value"></app-child>
+</div>
