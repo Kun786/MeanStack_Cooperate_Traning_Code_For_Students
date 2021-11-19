@@ -27,14 +27,14 @@ export class ContactUsComponent implements OnInit {
   }
 
   RegisterUser(){
-    const _UserRegisterationData = new FormData();
-    _UserRegisterationData.append('Name',this.ContactForm.get('Name').value);
-    _UserRegisterationData.append('Mobile',this.ContactForm.get('Mobile').value);
-    _UserRegisterationData.append('Address',this.ContactForm.get('Address').value);
-    _UserRegisterationData.append('ImageUrl',this.ContactForm.get('ImageUrl').value);
-    this._UserService.SendData(_UserRegisterationData).subscribe((DataComingFromBackEnd:any)=>{
-      console.log(DataComingFromBackEnd);
-    })
+    // const _UserRegisterationData = new FormData();
+    // _UserRegisterationData.append('Name',this.ContactForm.get('Name').value);
+    // _UserRegisterationData.append('Mobile',this.ContactForm.get('Mobile').value);
+    // _UserRegisterationData.append('Address',this.ContactForm.get('Address').value);
+    // _UserRegisterationData.append('ImageUrl',this.ContactForm.get('ImageUrl').value);
+    // this._UserService.SendData(_UserRegisterationData).subscribe((DataComingFromBackEnd:any)=>{
+    //   console.log(DataComingFromBackEnd);
+    // })
 
   }
 

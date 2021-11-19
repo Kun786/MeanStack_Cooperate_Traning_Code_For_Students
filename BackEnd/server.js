@@ -2,6 +2,7 @@
 const DataBaseConnection = require ('./configuration/DataBaseConnection');
 const express = require('express');
 const cors = require('cors');
+const bodyparser = require('body-parser');
 //Block End for Dependencies
 
 
@@ -17,25 +18,24 @@ app.use(express.text());
 app.use(cors());
 //Block End Initialize the APP
 
-//Making My Folder Public Using Static function
-app.use('/assets',express.static('assets'));
-//Making My Folder Public Using Static function
-
 //Start Blcok Setting the Headers for you Application
 app.all('*', (req, res, next) => {
 
-     // This is how we protect the api
-     res.header('Access-Control-Allow-Origin','*');// So it make the header allow to the origin when cross platfrom try to exchange the data
-     res.header('Access-Control-Allow-Headers','Origin, X-Requested-With, Content-Type, Accept, Authorization');
-     if(req.method==='OPTIONS'){
-         res.header('Access-Control-Allow-Methods','PUT,POST,PATCH,DELETE,GET');
-     //Mehtod is a property which help us to use the Methods by request. Browers send the options request before your Mthods request
-  
-     }
-     next(); //if nothing of the response sent back so next() means other rou
+    // This is how we protect the api
+    res.header('Access-Control-Allow-Origin','*');// So it make the header allow to the origin when cross platfrom try to exchange the data
+    res.header('Access-Control-Allow-Headers','Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    if(req.method==='OPTIONS'){
+        res.header('Access-Control-Allow-Methods','PUT,POST,PATCH,DELETE,GET');
+    //Mehtod is a property which help us to use the Methods by request. Browers send the options request before your Mthods request
+ 
+    }
+    next(); //if nothing of the response sent back so next() means other rou
 });
 //End Block Setting the Headers for you Application
 
+//Making My Folder Public Using Static function
+app.use('/assets',express.static('assets'));
+//Making My Folder Public Using Static function
 
 //Start Block Load Routes
 

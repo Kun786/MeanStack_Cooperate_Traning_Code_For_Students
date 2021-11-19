@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../Shared/user.service';
+import { baseUrl } from '../ApplicationConfiguration/ApplicationConfiguration';
 
 @Component({
   selector: 'app-gallery',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./gallery.component.css']
 })
 export class GalleryComponent implements OnInit {
-
-  constructor() { }
+  _DataArray:any=[];
+  _BaseUrl = baseUrl;
+  constructor(private _UserService:UserService) { }
 
   ngOnInit(): void {
+    // this._UserService.GetAllUsers().subscribe((DataComingFromBAckend:any)=>{
+    //   this._DataArray = DataComingFromBAckend.Result;
+    //   console.log(this._DataArray);
+    // })
   }
 
 }

@@ -9,7 +9,7 @@ const { UploadUserImage } = require('../libraryfiles/UploadUserImage');
 //Calling controlers
 const { MyFirstApiContorller, UpdateUser, GetAllUsersFromTestCollection, GetUserById, UpdateById, RemoveUserById, RemoveAllCollection } = require('../controllers/TestingAndLearningController')
 //Calling controlers
-Router.post('/testing',UploadUserImage.single('Image'),MyFirstApiContorller );
+Router.post('/testing',UploadUserImage.single('ImageUrl'),MyFirstApiContorller );
 Router.post('/UpdateTest/:_UserId',UpdateUser);
 Router.get('/GetAllUsers',GetAllUsersFromTestCollection);
 Router.get('/GetUserById/:_UserId',GetUserById);

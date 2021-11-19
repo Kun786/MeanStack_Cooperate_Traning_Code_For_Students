@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { UserUrl } from '../ApplicationConfiguration/ApplicationConfiguration';
+import { UserUrl, GetUserUrl } from '../ApplicationConfiguration/ApplicationConfiguration';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -8,8 +8,11 @@ import { HttpClient } from '@angular/common/http';
 export class UserService {
   constructor(private _HttpClient:HttpClient) { }
 
-  SendData(_PayLoad:any) {
-    return this._HttpClient.post(UserUrl,_PayLoad)
-  }
+  // SendData(_PayLoad:any) {
+  //   return this._HttpClient.post(UserUrl,_PayLoad)
+  // }
 
+  // GetAllUsers() {
+  //  return this._HttpClient.get(GetUserUrl);
+  // }
 }
