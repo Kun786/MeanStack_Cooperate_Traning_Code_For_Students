@@ -1,5 +1,15 @@
 <br><br><br>
 <div class="container">
 <h1 class="text-center text-success">LogIn Form</h1>
-fo
+<form [formGroup]="_LoginForm" (ngSubmit)="LogIn()"> 
+  <div class="mb-3">
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" formControlName="Email">
+  </div>
+  <div class="mb-3">
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" formControlName="Password">
+  </div>
+  <button type="submit" class="btn btn-primary w-100">LogIn</button>
+</form>
 </div>
+
+<br><br><br>
