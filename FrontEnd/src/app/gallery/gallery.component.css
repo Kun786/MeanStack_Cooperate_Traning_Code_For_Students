@@ -1,3 +1,9 @@
 img{
     height: 200px;
 }
+
+
+
+group>.btn:nth-child(n+3), .btn-group>:not(.btn-check)+.btn {
+    margin-left: 15px;
+}

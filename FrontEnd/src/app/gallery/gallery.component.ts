@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../Shared/user.service';
 import { baseUrl } from '../ApplicationConfiguration/ApplicationConfiguration';
+import { TestingService } from '../Shared/testing.service';
 
 @Component({
   selector: 'app-gallery',
@@ -8,15 +9,24 @@ import { baseUrl } from '../ApplicationConfiguration/ApplicationConfiguration';
   styleUrls: ['./gallery.component.css']
 })
 export class GalleryComponent implements OnInit {
-  _DataArray:any=[];
-  _BaseUrl = baseUrl;
-  constructor(private _UserService:UserService) { }
+  _UserDataArray:any=[];
+  _BaseUrl =baseUrl;
+  constructor(private _TestingService:TestingService) { }
 
   ngOnInit(): void {
     // this._UserService.GetAllUsers().subscribe((DataComingFromBAckend:any)=>{
     //   this._DataArray = DataComingFromBAckend.Result;
     //   console.log(this._DataArray);
     // })
+    this._TestingService.GetAllUserData().subscribe((DataComingFromBackEnd:any)=>{
+      this._UserDataArray = DataComingFromBackEnd.Result;
+    })
+  }
+
+  DeleteCard(_ImageUrl:any){
+    this._TestingService.DeleteCard(_ImageUrl).subscribe((DataComingFromBackEnd:any)=>{
+      console.log(DataComingFromBackEnd);
+    })
   }
 
 }

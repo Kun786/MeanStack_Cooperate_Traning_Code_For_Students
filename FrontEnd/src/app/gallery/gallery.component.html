@@ -15,7 +15,7 @@
     <div class="container">
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <!-- <div class="col" *ngFor="let data of _DataArray">
+        <div class="col" *ngFor="let data of _UserDataArray">
           <div class="card shadow-sm">
             <img [src]="_BaseUrl+data.ImageUrl" alt="">
 
@@ -23,14 +23,15 @@
               <p class="card-text">{{data.Name}}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">{{data.MobileNumber}}</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">{{data.Address}}</button>
-                </div>
+                  <button  class="btn btn-sm btn-outline-secondary">{{data.MobileNumber}}</button>
+                  <button  class="btn btn-sm btn-outline-secondary">{{data.Address}}</button>
+                  <button class="btn btn-outline-danger" (click)=DeleteCard(data.ImageUrl)>Delete Card</button>
+                </div> 
                 <small class="text-muted">9 mins</small>
               </div>
             </div>
           </div>
-        </div> -->
+        </div>
       </div>
     </div>
   </div>

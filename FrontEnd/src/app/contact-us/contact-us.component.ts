@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { TestingService } from '../Shared/testing.service';
 import { UserService } from '../Shared/user.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { UserService } from '../Shared/user.service';
 export class ContactUsComponent implements OnInit {
   ContactForm:any = FormGroup;
   ImageUrl:any;
-  constructor(private _Formbuilder:FormBuilder, private _UserService:UserService) { this.ContactFormValues() }
+  constructor(private _Formbuilder:FormBuilder, private _TestingService:TestingService) { this.ContactFormValues() }
   ngOnInit(){}
 
   ContactFormValues(){
@@ -35,6 +36,17 @@ export class ContactUsComponent implements OnInit {
     // this._UserService.SendData(_UserRegisterationData).subscribe((DataComingFromBackEnd:any)=>{
     //   console.log(DataComingFromBackEnd);
     // })
+
+    const _MyFormData = new FormData();
+    _MyFormData.append('Name',this.ContactForm.get('Name').value);
+    _MyFormData.append('MobileNumber',this.ContactForm.get('Mobile').value);
+    _MyFormData.append('Address',this.ContactForm.get('Address').value);
+    _MyFormData.append('ImageUrl',this.ContactForm.get('ImageUrl').value);
+    this._TestingService.SendDataToBackEnd(_MyFormData).subscribe((DataComingFromBackEnd:any)=>{
+      console.log(DataComingFromBackEnd);
+      this.ContactForm.reset();
+    })
+
 
   }
 

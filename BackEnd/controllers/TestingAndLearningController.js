@@ -1,14 +1,6 @@
 //call model here
 const _TestingAndLearningCollection = require('../models/UserModel');
-
-// const TestController = async (req,res) =>{
-//    try {
-
-//    } catch (error) {
-
-//    }
-// }
-
+const fs = require('fs');
 
 
 const MyFirstApiContorller = async (req, res) => {
@@ -148,9 +140,11 @@ const UpdateById = async (req, res) => {
 
 const RemoveUserById = async (req, res) => {
     try {
-        const _GetUserId = req.params._UserId;
+        console.log('rekshakj');
+        const _GetUserImageUrl = req.params._ImageUrl;
+        console.log(_GetUserImageUrl);
         const _RemoveUserById = await _TestingAndLearningCollection.deleteOne(
-            { _id: _GetUserId }
+            { ImageUrl: _GetUserImageUrl }
         );
         res.json({
             Message: 'Deleted Successfully',
