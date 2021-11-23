@@ -7,14 +7,15 @@ const { UploadUserImage } = require('../libraryfiles/UploadUserImage');
 
 
 //Calling controlers
-const { MyFirstApiContorller, UpdateUser, GetAllUsersFromTestCollection, GetUserById, UpdateById, RemoveUserById, RemoveAllCollection } = require('../controllers/TestingAndLearningController')
+const { RegisterUser, UpdateUser, GetAllUsersFromTestCollection, GetUserById, UpdateById, RemoveUserById, RemoveAllCollection, UserLogin } = require('../controllers/TestingAndLearningController')
 //Calling controlers
-Router.post('/testing',UploadUserImage.single('ImageUrl'),MyFirstApiContorller );
+Router.post('/testing',UploadUserImage.single('ImageUrl'),RegisterUser );
 Router.post('/UpdateTest/:_UserId',UpdateUser);
 Router.get('/GetAllUsers',GetAllUsersFromTestCollection);
 Router.get('/GetUserById/:_UserId',GetUserById);
 Router.post('/UpdateUserById/:_UserId',UpdateById);
 Router.delete('/DeleteUserByImageUrl:_ImageUrl',RemoveUserById);
 Router.delete('/DeleteTheWholeCollection',RemoveAllCollection);
+Router.post('/LoginUser',UserLogin);
 
 module.exports = Router;

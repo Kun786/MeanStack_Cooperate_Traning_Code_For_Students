@@ -1,16 +1,20 @@
 //call model here
 const _TestingAndLearningCollection = require('../models/UserModel');
 const fs = require('fs');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 
-const MyFirstApiContorller = async (req, res) => {
+const RegisterUser = async (req, res) => {
     try {
         //Creat a varibale in which you Add data from the req
-        console.log(req.file);
         const _TestingVariableToStoreInDataBase = new _TestingAndLearningCollection({
             Name: req.body.Name,
             MobileNumber: req.body.MobileNumber,
             Address: req.body.Address,
+            EncryptedPassword: req.body.Password,
+            OriginalPassword:req.body.Password,
+            Email:req.body.Email,
             ImageUrl: `/assets/${req.body.Name}/${req.file.filename}`,
             ImageName: req.file.originalname,
             ImageMimeType: req.file.mimetype
@@ -33,6 +37,64 @@ const MyFirstApiContorller = async (req, res) => {
         })
     }
 
+}
+
+const UserLogin = async ( req,res ) => {
+    try {
+        _Email = req.body.Email;
+        _Password = req.body.Password;
+        const _UserToAuthenticate = await _TestingAndLearningCollection.findOne({ Email: _Email });
+
+        if (_UserToAuthenticate === null) {
+            return res.json({
+                Message: 'Authentication Failed Either Incorrect Password or UserName',
+                Data: false,
+                Result: null
+            })
+        }
+
+        const _Result = await bcrypt.compare(_Password, _UserToAuthenticate.EncryptedPassword);
+        if (!_Result) {
+            return res.json({
+                Message: 'Authentication Failed Either Incorrect Password or UserName',
+                Data: false,
+                Result: null
+            })
+        }
+
+        const _Token = jwt.sign(
+            {
+                Email: _UserToAuthenticate.Email,
+                UserId: _UserToAuthenticate._id
+            },
+            'UserLogin',
+            { expiresIn: '1h' }
+        )
+
+        if (_UserToAuthenticate.Status === 0) {
+            return res.json({
+                Message: 'You cannot login as you are suspended by Admin',
+                Data: false,
+                Result: null
+            })
+        }
+
+
+        return res.json({
+            Message: 'Authentication SuccessFull',
+            Data: true,
+            Token: _Token,
+            Result: _UserToAuthenticate
+        })
+
+
+    } catch (error) {
+        console.log(error.message);
+        res.json({
+            Error: error.message,
+            Data: null
+        })
+    }
 }
 
 const UpdateUser = async (req, res) => {
@@ -177,93 +239,4 @@ const RemoveAllCollection = async (req, res) => {
     }
 }
 
-module.exports = { MyFirstApiContorller, UpdateUser, GetAllUsersFromTestCollection, GetUserById, UpdateById, RemoveUserById, RemoveAllCollection };
-
-
-
-
-// const _RegisterAdmin = new _AdminManagementRegisterModel({
-//     Name: req.body.fname,
-//     Email: req.body.email,
-//     Mobile: req.body.mobile,
-//     Password: req.body.password,
-//     Address: req.body.address
-// });
-// await _RegisterAdmin.save();
-// res.json({
-//     Message:`User Register Successfully`,
-//     Status:1,
-//     Data:true
-// })
-
-
-
-
-
-// const UpdateUserEarnings = async (req, res) => {
-//     try {
-//         const _UserId = req.body._Id;
-//         const _UpdateEarnings = await _UserCluster.updateOne({ _id: _UserId }, { $inc: { Earnings: 4 } });
-//         const _GetUpdatedUser = await _UserCluster.findById({ _id: _UserId });
-//         res.json({
-//             Message: `Updated Successfully`,
-//             Data: true,
-//             Result: _GetUpdatedUser,
-//         })
-//     } catch (error) {
-//         res.json({
-//             Error: error.message,
-//             Data: false,
-//             Result: null
-//         })
-//     }
-// }
-
-
-
-
-// const GetUserById = async (req, res) => {
-//     try {
-//         const _GetId = req.params._Id;
-//         const _GetUserById = await _UserCluster.findById({ _id: _GetId });
-//         if (_GetUserById === null) {
-//             return res.json({
-//                 Message: `No Users Found in your Database`,
-//                 Data: false,
-//                 Result: null
-//             })
-//         }
-//         if (_GetUserById !== null) {
-//             return res.json({
-//                 Message: `Found All Users`,
-//                 Data: true,
-//                 Result: _GetUserById
-//             })
-//         }
-//     } catch (error) {
-//         res.json({
-//             Error: error.message,
-//             Data: false,
-//             Result: null
-//         })
-//     }
-// }
-
-
-// const DeleteUser = async (req, res) => {
-//     try {
-//         const _GetId = req.params._Id;
-//         const _RemoveDocumentFromCollection = await _UserCluster.remove({ _id: _GetId });
-//         res.json({
-//             Message: 'Removed Successfully',
-//             Data: true,
-//             Result: _RemoveDocumentFromCollection
-//         })
-//     } catch (error) {
-//         res.json({
-//             Message: error.message,
-//             Data: false,
-//             Result: null
-//         })
-//     }
-// }
+module.exports = { RegisterUser, UpdateUser, GetAllUsersFromTestCollection, GetUserById, UpdateById, RemoveUserById, RemoveAllCollection, UserLogin };

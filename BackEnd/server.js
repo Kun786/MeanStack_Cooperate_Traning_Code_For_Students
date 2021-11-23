@@ -3,6 +3,7 @@ const DataBaseConnection = require ('./configuration/DataBaseConnection');
 const express = require('express');
 const cors = require('cors');
 const bodyparser = require('body-parser');
+const bcrypt = require('bcrypt');
 //Block End for Dependencies
 
 
