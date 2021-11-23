@@ -6,7 +6,7 @@ import { UserUrl ,GetUserUrl ,DeleteUserUrl } from '../ApplicationConfiguration/
   providedIn: 'root'
 })
 export class TestingService {
- 
+  
  
   
 
@@ -23,4 +23,9 @@ export class TestingService {
   DeleteCard(_ImageUrl:any) {
     return this._HttpClient.delete(DeleteUserUrl);
   }
+
+  CheckIfUserLoggedIn() {
+    return true
+  }
+ 
 }
