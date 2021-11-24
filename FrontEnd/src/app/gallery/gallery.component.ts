@@ -23,9 +23,10 @@ export class GalleryComponent implements OnInit {
     })
   }
 
-  DeleteCard(_ImageUrl:any){
-    this._TestingService.DeleteCard(_ImageUrl).subscribe((DataComingFromBackEnd:any)=>{
+  DeleteCard(_id:any){
+    this._TestingService.DeleteCard(_id).subscribe((DataComingFromBackEnd:any)=>{
       console.log(DataComingFromBackEnd);
+      this.ngOnInit();
     })
   }
 

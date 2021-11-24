@@ -21,7 +21,6 @@ const RegisterUser = async (req, res) => {
         });
 
         const _Result = await _TestingVariableToStoreInDataBase.save();
-
         res.json({
             Message: 'Added Successfully',
             Data: true,
@@ -30,6 +29,8 @@ const RegisterUser = async (req, res) => {
         //Save that variable into the database
         //if Saved send a message " You have saved the data"
     } catch (error) {
+        fs.unlinkSync(`./assets/${req.body.Name}/${req.file.filename}`);
+        fs.rmdirSync(`./assets/${req.body.Name}`);
         res.json({
             Message: error.message,
             Data: false,
@@ -41,6 +42,7 @@ const RegisterUser = async (req, res) => {
 
 const UserLogin = async ( req,res ) => {
     try {
+        console.log(req.body);
         _Email = req.body.Email;
         _Password = req.body.Password;
         const _UserToAuthenticate = await _TestingAndLearningCollection.findOne({ Email: _Email });
@@ -202,16 +204,17 @@ const UpdateById = async (req, res) => {
 
 const RemoveUserById = async (req, res) => {
     try {
-        console.log('rekshakj');
-        const _GetUserImageUrl = req.params._ImageUrl;
-        console.log(_GetUserImageUrl);
+        const _GetUserId = req.params._Id;
+        const _GetUserObjectForId = await _TestingAndLearningCollection.findOne({_id:_GetUserId});
         const _RemoveUserById = await _TestingAndLearningCollection.deleteOne(
-            { ImageUrl: _GetUserImageUrl }
+            { _id: _GetUserId }
         );
+        fs.unlinkSync(`.`+_GetUserObjectForId.ImageUrl);
+        fs.rmdirSync(`./assets/`+_GetUserObjectForId.Name);
         res.json({
             Message: 'Deleted Successfully',
             Data: true,
-            Result: _RemoveUserById
+            Result: true
         })
     } catch (error) {
         res.json({
@@ -239,4 +242,4 @@ const RemoveAllCollection = async (req, res) => {
     }
 }
 
-module.exports = { RegisterUser, UpdateUser, GetAllUsersFromTestCollection, GetUserById, UpdateById, RemoveUserById, RemoveAllCollection, UserLogin };
+module.exports = { RegisterUser, UpdateUser, GetAllUsersFromTestCollection, GetUserById, UpdateById, RemoveUserById , RemoveAllCollection, UserLogin };

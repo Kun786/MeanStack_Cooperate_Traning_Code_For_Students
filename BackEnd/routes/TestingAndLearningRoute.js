@@ -14,7 +14,7 @@ Router.post('/UpdateTest/:_UserId',UpdateUser);
 Router.get('/GetAllUsers',GetAllUsersFromTestCollection);
 Router.get('/GetUserById/:_UserId',GetUserById);
 Router.post('/UpdateUserById/:_UserId',UpdateById);
-Router.delete('/DeleteUserByImageUrl:_ImageUrl',RemoveUserById);
+Router.delete('/DeleteUserById/:_Id',RemoveUserById);
 Router.delete('/DeleteTheWholeCollection',RemoveAllCollection);
 Router.post('/LoginUser',UserLogin);
 

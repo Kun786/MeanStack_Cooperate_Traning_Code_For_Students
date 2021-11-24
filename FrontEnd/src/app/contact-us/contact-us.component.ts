@@ -19,6 +19,8 @@ export class ContactUsComponent implements OnInit {
       Name:[''],
       Mobile:[''],
       Address:[''],
+      Password:[''],
+      Email:[''],
       ImageUrl:['']
     })
   }
@@ -41,6 +43,8 @@ export class ContactUsComponent implements OnInit {
     _MyFormData.append('Name',this.ContactForm.get('Name').value);
     _MyFormData.append('MobileNumber',this.ContactForm.get('Mobile').value);
     _MyFormData.append('Address',this.ContactForm.get('Address').value);
+    _MyFormData.append('Password',this.ContactForm.get('Password').value);
+    _MyFormData.append('Email',this.ContactForm.get('Email').value);
     _MyFormData.append('ImageUrl',this.ContactForm.get('ImageUrl').value);
     this._TestingService.SendDataToBackEnd(_MyFormData).subscribe((DataComingFromBackEnd:any)=>{
       console.log(DataComingFromBackEnd);

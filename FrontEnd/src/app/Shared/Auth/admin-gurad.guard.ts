@@ -8,11 +8,9 @@ import { Observable } from 'rxjs';
 })
 export class AdminGuradGuard implements CanActivate {
   constructor (private _Router:Router , private _TestingService:TestingService) {}
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if(!this._TestingService.CheckIfUserLoggedIn()){
-      this._Router.navigate(['/contactus']);
+  canActivate(){
+    if(!this._TestingService.CheckIfUserisLoggedIn()){
+      this._Router.navigate(['/login']);
       return false;
     } else {
       return true;

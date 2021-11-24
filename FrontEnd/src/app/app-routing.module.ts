@@ -8,6 +8,7 @@ import { AdminComponent } from './AdminModule/admin/admin.component';
 import { DashBoardComponent } from './AdminModule/components/DashBoard/dash-board/dash-board.component';
 import { UsersComponent } from './AdminModule/components/Users/users/users.component';
 import { LoginComponent } from './login/login.component';
+import { AdminGuradGuard } from './Shared/Auth/admin-gurad.guard';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -15,7 +16,7 @@ const routes: Routes = [
   {path:'gallery',component:GalleryComponent},
   {path:'contactus',component:ContactUsComponent},
   {path:'login',component:LoginComponent},
-  {path:'admin',component:AdminComponent,
+  {path:'admin', canActivate:[AdminGuradGuard] ,component:AdminComponent,
   children:[
     {path:'',component:DashBoardComponent},
     {path:'dashboard',component:DashBoardComponent},
