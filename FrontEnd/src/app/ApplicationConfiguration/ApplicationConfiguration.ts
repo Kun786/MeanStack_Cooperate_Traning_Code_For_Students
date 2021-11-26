@@ -6,4 +6,5 @@ export const UserUrl = baseUrl+'/TestingAndLearningRoute/testing';
 export const GetUserUrl = baseUrl+'/TestingAndLearningRoute/GetAllUsers';
 export const DeleteUserUrl = baseUrl+'/TestingAndLearningRoute/DeleteUserById/'
 export const LoginUserUrl = baseUrl+'/TestingAndLearningRoute/LoginUser';
+export const SOCKET_ENDPOINT = 'localhost:1234'
 //Routes

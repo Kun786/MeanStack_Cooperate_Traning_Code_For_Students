@@ -9,6 +9,7 @@ const { UploadUserImage } = require('../libraryfiles/UploadUserImage');
 //Calling controlers
 const { RegisterUser, UpdateUser, GetAllUsersFromTestCollection, GetUserById, UpdateById, RemoveUserById, RemoveAllCollection, UserLogin } = require('../controllers/TestingAndLearningController')
 //Calling controlers
+
 Router.post('/testing',UploadUserImage.single('ImageUrl'),RegisterUser );
 Router.post('/UpdateTest/:_UserId',UpdateUser);
 Router.get('/GetAllUsers',GetAllUsersFromTestCollection);

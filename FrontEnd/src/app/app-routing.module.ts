@@ -13,6 +13,7 @@ import { UserComponent } from './UserModule/user/user/user.component';
 import { UserHeaderComponent } from './UserModule/components/UserHeader/user-header/user-header.component';
 import { UserManagementComponent } from './UserModule/components/UserManagement/user-management/user-management.component';
 import { TestGuard } from './Shared/Auth/test.guard';
+import { ChatBoxComponent } from './chat-box/chat-box.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'gallery', component: GalleryComponent },
   { path: 'contactus', component: ContactUsComponent },
   { path: 'login', component: LoginComponent },
+  {path:'Chat',component:ChatBoxComponent},
   {
     path: 'admin', canActivate: [AdminGuradGuard], component: AdminComponent,
     children: [
