@@ -8,7 +8,7 @@ const { SendMessageToAdmin, SendMessageToUser, GetMessageFromAdmin, GetMessageFr
 
 Router.post('/SendMessageToAdmin',SendMessageToAdmin);
 Router.post('/SendMessageToUser',SendMessageToUser);
-Router.post('/GetMessageFromAdmin',GetMessageFromAdmin);
-Router.post('/GetMessageFromUser',GetMessageFromUser);
+Router.get('/GetMessageFromAdmin',GetMessageFromAdmin);
+Router.get('/GetMessageFromUser',GetMessageFromUser);
 
 module.exports = Router;

@@ -1,0 +1,9 @@
+.out{
+    width: 100%;
+    height: 500px;
+    border: 1px solid black;
+}
+
+li{
+    list-style-type: none;
+}

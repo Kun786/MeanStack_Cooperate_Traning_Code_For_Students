@@ -2,13 +2,18 @@
 <div class="container">
     <form [formGroup]="_MessageForm" (ngSubmit)="SendMessage()">
         <label for="">Incoming</label>
-        <textarea name="" id="" cols="30" rows="10" class="w-100">{{_ActualMessage}}</textarea>
+        <div class="out">
+            <ul>
+                <li *ngFor="let data of _ActualMessage">{{data.Message}}</li>
+            </ul>
+        </div>
         <label for="">Outgoing</label>
         <textarea name="" id="" cols="30" rows="10" class="w-100" formControlName="Message"></textarea>
-        <button type="submit" class="btn btn-outline-primary w-100">Primary</button>
-        <div *ngIf="Message" class="alert alert-primary text-center" role="alert" DirectiveMessage [_DataStatusValue]="_TempDataForMessages">
+        <button type="submit" class="btn btn-outline-primary w-100">Send</button>
+        <!-- <div *ngIf="_ActualMessage" class="alert alert-primary text-center" role="alert" DirectiveMessage [_DataStatusValue]="_TempDataForMessages">
             {{_ResponseMessage}}
-          </div>
+          </div> -->
+          {{_ResponseMessage}}
     </form>
 
 </div>
