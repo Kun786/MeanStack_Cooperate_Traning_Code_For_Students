@@ -17,6 +17,8 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(express.text());
 app.use(cors());
+const _ScoketIo = require('http').createServer(app);
+const io = require('socket.io')(_ScoketIo);
 //Block End Initialize the APP
 
 //Start Blcok Setting the Headers for you Application
@@ -42,6 +44,7 @@ app.use('/assets',express.static('assets'));
 
 // LoadingRoutes in Variable
 const _TestintAndLearningRoute = require('./routes/TestingAndLearningRoute');
+const { http } = require('npmlog');
 // LoadingRoutes in Variable
 
 //UsingRoutes
@@ -69,7 +72,12 @@ app.use((error,req,res,next)=>{
 });
 
 
-
+//Enabling listen to the connection event for new incoming socket connections 
+io.on('connection', (socket) => {
+    console.log('a user connected');
+    console.log(socket);
+  });
+//Enabling listen to the connection event for new incoming socket connections
 
 //Starting the app
 app.listen(PORT,()=>{
