@@ -17,7 +17,7 @@
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <div class="col" *ngFor="let data of _UserDataArray">
           <div class="card shadow-sm">
-            <img [src]="_BaseUrl+data.ImageUrl" alt="">
+            <img [src]="data.ImageUrl" alt="">
 
             <div class="card-body">
               <p class="card-text">{{data.Name}}</p>
