@@ -4,6 +4,7 @@ import { UserComponent } from './user.component';
 import { UserHeaderComponent } from '../../components/UserHeader/user-header/user-header.component';
 import { UserManagementComponent } from '../../components/UserManagement/user-management/user-management.component';
 import { RouterModule } from '@angular/router';
+import { UserChatBoxComponent } from '../../components/UserChatBox/user-chat-box/user-chat-box.component';
 
 
 
@@ -11,7 +12,8 @@ import { RouterModule } from '@angular/router';
   declarations: [
     UserComponent,
     UserHeaderComponent,
-    UserManagementComponent
+    UserManagementComponent,
+    UserChatBoxComponent
   ],
   imports: [
     CommonModule,

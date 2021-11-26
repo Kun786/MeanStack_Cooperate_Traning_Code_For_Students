@@ -13,7 +13,8 @@ import { UserComponent } from './UserModule/user/user/user.component';
 import { UserHeaderComponent } from './UserModule/components/UserHeader/user-header/user-header.component';
 import { UserManagementComponent } from './UserModule/components/UserManagement/user-management/user-management.component';
 import { TestGuard } from './Shared/Auth/test.guard';
-import { ChatBoxComponent } from './chat-box/chat-box.component';
+import { ChatBoxComponent } from './AdminModule/components/ChatBox/chat-box/chat-box.component';
+import { UserChatBoxComponent } from './UserModule/components/UserChatBox/user-chat-box/user-chat-box.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,13 +22,13 @@ const routes: Routes = [
   { path: 'gallery', component: GalleryComponent },
   { path: 'contactus', component: ContactUsComponent },
   { path: 'login', component: LoginComponent },
-  {path:'Chat',component:ChatBoxComponent},
   {
     path: 'admin', canActivate: [AdminGuradGuard], component: AdminComponent,
     children: [
       { path: '', component: DashBoardComponent },
       { path: 'dashboard', component: DashBoardComponent },
-      { path: 'users', component: UsersComponent }
+      { path: 'users', component: UsersComponent },
+      { path: 'chat', component:ChatBoxComponent},
     ]
   },
   {
@@ -35,7 +36,8 @@ const routes: Routes = [
     children: [
       { path: '', component: UserHeaderComponent },
       { path: 'UserHead', component: UserHeaderComponent },
-      { path: 'UserManagement', component: UserManagementComponent }
+      { path: 'UserManagement', component: UserManagementComponent },
+      { path: 'uchat', component:UserChatBoxComponent}
     ]
   }
 ];

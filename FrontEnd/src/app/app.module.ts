@@ -15,7 +15,6 @@ import { ChildComponent } from './parent/child/child.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { UserModule } from './UserModule/user/user/user.module';
-import { ChatBoxComponent } from './chat-box/chat-box.component';
 
 @NgModule({
   declarations: [
@@ -27,8 +26,7 @@ import { ChatBoxComponent } from './chat-box/chat-box.component';
     FooterComponent,
     ParentComponent,
     ChildComponent,
-    LoginComponent,
-    ChatBoxComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
