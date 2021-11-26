@@ -5,6 +5,7 @@ import { DashBoardComponent } from '../components/DashBoard/dash-board/dash-boar
 import { UsersComponent } from '../components/Users/users/users.component';
 import { RouterModule } from '@angular/router';
 import { ChatBoxComponent } from '../components/ChatBox/chat-box/chat-box.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -14,10 +15,13 @@ import { ChatBoxComponent } from '../components/ChatBox/chat-box/chat-box.compon
     DashBoardComponent,
     UsersComponent,
     ChatBoxComponent
+    
   ],
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class AdminModule { }

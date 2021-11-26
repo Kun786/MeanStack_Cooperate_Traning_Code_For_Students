@@ -7,7 +7,7 @@ const { SendMessageToAdmin, SendMessageToUser, GetMessageFromAdmin, GetMessageFr
 //Calling controlers
 
 Router.post('/SendMessageToAdmin',SendMessageToAdmin);
-Router.post('SendMessageToUser',SendMessageToUser);
+Router.post('/SendMessageToUser',SendMessageToUser);
 Router.post('/GetMessageFromAdmin',GetMessageFromAdmin);
 Router.post('/GetMessageFromUser',GetMessageFromUser);
 

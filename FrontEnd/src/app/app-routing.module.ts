@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'contactus', component: ContactUsComponent },
   { path: 'login', component: LoginComponent },
   {
-    path: 'admin', canActivate: [AdminGuradGuard], component: AdminComponent,
+    path: 'admin', component: AdminComponent,
     children: [
       { path: '', component: DashBoardComponent },
       { path: 'dashboard', component: DashBoardComponent },

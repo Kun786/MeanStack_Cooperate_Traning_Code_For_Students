@@ -15,6 +15,8 @@ import { ChildComponent } from './parent/child/child.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { UserModule } from './UserModule/user/user/user.module';
+import { MessageDirective } from './Shared/CustomDirective/MessageDirective/message.directive';
+import { StyleDirective } from './Shared/CustomDirective/StyleDirective/style.directive';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { UserModule } from './UserModule/user/user/user.module';
     FooterComponent,
     ParentComponent,
     ChildComponent,
-    LoginComponent
+    LoginComponent,
+    MessageDirective,
+    StyleDirective
   ],
   imports: [
     BrowserModule,

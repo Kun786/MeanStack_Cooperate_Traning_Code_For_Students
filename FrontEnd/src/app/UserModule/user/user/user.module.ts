@@ -5,6 +5,7 @@ import { UserHeaderComponent } from '../../components/UserHeader/user-header/use
 import { UserManagementComponent } from '../../components/UserManagement/user-management/user-management.component';
 import { RouterModule } from '@angular/router';
 import { UserChatBoxComponent } from '../../components/UserChatBox/user-chat-box/user-chat-box.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -17,7 +18,9 @@ import { UserChatBoxComponent } from '../../components/UserChatBox/user-chat-box
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class UserModule { }
