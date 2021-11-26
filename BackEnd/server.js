@@ -4,12 +4,13 @@ const express = require('express');
 const cors = require('cors');
 const bodyparser = require('body-parser');
 const bcrypt = require('bcrypt');
+const path = require('path');
 //Block End for Dependencies
 
 
 
 //Global Constant
-const PORT = 1234;
+const PORT = process.env.PORT || 1234;
 
 //Block Start Initialize the APP
 const app = express();
@@ -36,6 +37,7 @@ app.all('*', (req, res, next) => {
 
 //Making My Folder Public Using Static function
 app.use('/assets',express.static('assets'));
+app.use(express.static(path.join(__dirname,'/FrontEnd')));
 //Making My Folder Public Using Static function
 
 //Start Block Load Routes
@@ -53,6 +55,13 @@ app.use('/ChatManagement',_ChatManagementRoute);
 //End Block Load Routes
 
 
+//Serving Front End From Express Server
+app.get('*',(req,res)=>{
+    res.sendFile(path.join(__dirname+'/FrontEnd/index.html'));
+    console.log(__dirname);
+});
+//Serving Front End From Express Server
+
 
 //Start Block Checking Routes As express not found Url not Founded we need to do it explicitly 
 app.use((req,res,next)=>{
@@ -69,8 +78,6 @@ app.use((error,req,res,next)=>{
         }
     })
 });
-
-
 
 
 //Starting the app
