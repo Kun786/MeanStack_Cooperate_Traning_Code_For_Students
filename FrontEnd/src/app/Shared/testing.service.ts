@@ -30,24 +30,23 @@ export class TestingService {
     return this._HttpClient.delete(DeleteUserUrl+`${_Params}`);
   }
 
-  CheckIfUserLoggedIn() {
-    return true
-  }
+  
 
   SaveLogInDataToLocalStorage(DataComingFromBackEnd: any) {
-    localStorage.setItem('admin_Id',DataComingFromBackEnd.Result._id);
-    localStorage.setItem('access_admin_token',DataComingFromBackEnd.Token);
-    this._Router.navigate(['admin']);
+    console.log(DataComingFromBackEnd);
+    localStorage.setItem('user_Id',DataComingFromBackEnd.Result._id);
+    localStorage.setItem('access_user_token',DataComingFromBackEnd.Token);
+    this._Router.navigate(['UserModule']);
   }
 
   ClearLogiInDataFromLocalStorage(){
-    localStorage.removeItem('admin_Id');
-    localStorage.removeItem('access_admin_token');
+    localStorage.removeItem('user_Id');
+    localStorage.removeItem('access_user_token');
     this._Router.navigate(['login']);
   }
 
   CheckIfUserisLoggedIn(){
-    return localStorage.getItem('access_admin_token') != null;
+    return localStorage.getItem('access_user_token') != null;
   }
  
 }

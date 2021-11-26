@@ -42,7 +42,6 @@ const RegisterUser = async (req, res) => {
 
 const UserLogin = async ( req,res ) => {
     try {
-        console.log(req.body);
         _Email = req.body.Email;
         _Password = req.body.Password;
         const _UserToAuthenticate = await _TestingAndLearningCollection.findOne({ Email: _Email });

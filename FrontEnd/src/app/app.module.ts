@@ -14,6 +14,7 @@ import { ParentComponent } from './parent/parent.component';
 import { ChildComponent } from './parent/child/child.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
+import { UserModule } from './UserModule/user/user/user.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { LoginComponent } from './login/login.component';
     FooterComponent,
     ParentComponent,
     ChildComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +34,8 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AdminModule
+    AdminModule,
+    UserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
