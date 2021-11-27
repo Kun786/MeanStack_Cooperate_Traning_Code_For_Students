@@ -15,7 +15,8 @@ export class GalleryComponent implements OnInit {
   _UpdateFrom:FormGroup | any;
   _Identity:any;
   _OldName:any;
-  _OldAddress:any
+  _OldAddress:any;
+  _ImageInfo:any;
   constructor(private _TestingService:TestingService, private _FormBuilder:FormBuilder ) { this.UpdateFormModel() }
 
   GetCardId(Id:any){
@@ -42,9 +43,15 @@ export class GalleryComponent implements OnInit {
     this._UpdateFrom = this._FormBuilder.group({
       _Id:[''],
       NewName:[''],
-      NewAddress:['']
+      NewAddress:[''],
+      // ImageInfo:['']
     })
   }
+
+  // NewImageToUpdate(event:any){
+  //   this._ImageInfo=event.target.files[0];
+  //   this._UpdateFrom.get('ImageInfo').setValue(this._ImageInfo);
+  // }
 
   DeleteCard(_id:any){
     this._TestingService.DeleteCard(_id).subscribe((DataComingFromBackEnd:any)=>{
@@ -53,9 +60,13 @@ export class GalleryComponent implements OnInit {
   }
 
   UpdateForm(){
+    // const _GetUpdateFormValue = new FormData();
+    // _GetUpdateFormValue.append('_Id',this._UpdateFrom.get('_Id').value);
+    // _GetUpdateFormValue.append('NewName',this._UpdateFrom.get('NewName').value);
+    // _GetUpdateFormValue.append('NewAddress',this._UpdateFrom.get('NewAddress').value);
+    // _GetUpdateFormValue.append('ImageInfo',this._UpdateFrom.get('ImageInfo').value);
     const _GetUpdateFormValue = this._UpdateFrom.value;
     this._TestingService.UpdateUserById(_GetUpdateFormValue).subscribe((DataComingFromBackEnd) => {
-      console.log(DataComingFromBackEnd);
       this.ngOnInit();
     })
 

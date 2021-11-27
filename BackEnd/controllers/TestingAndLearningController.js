@@ -173,6 +173,9 @@ const UpdateById = async (req, res) => {
         const _GetUserId = req.params._UserId;
         const _GetUserName = req.body.NewName;
         const _GetUserAddress = req.body.NewAddress;
+        // const _GetUser = await _TestingAndLearningCollection.findOne({_id:_GetUserId});
+        // const _UserImageUrlUrlToUpdate = _GetUser.ImageUrl;
+        // console.log(_UserImageUrlUrlToUpdate);
         const _UpdateUserById = await _TestingAndLearningCollection.updateOne(
             { _id: _GetUserId },
             { $set: { Name:_GetUserName, Address: _GetUserAddress } }

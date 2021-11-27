@@ -42,5 +42,7 @@ export class ChatBoxComponent implements OnInit {
         this._ActualMessage=null;
       }, 8000);
     })
+    this.ngOnInit();
+    this.ngOnChanges();
   }
 }

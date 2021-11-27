@@ -40,5 +40,7 @@ export class UserChatBoxComponent implements OnInit {
     this._ChatService.SendMessageToAdmin(_Message).subscribe((DataComingFromBackEnd:any)=>{
       this._ResponseMessage = DataComingFromBackEnd.Message;
     })
+    this.ngOnChanges();
+    this.ngOnInit();
   }
 }
