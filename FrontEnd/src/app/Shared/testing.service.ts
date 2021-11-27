@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserUrl ,GetUserUrl ,DeleteUserUrl,LoginUserUrl } from '../ApplicationConfiguration/ApplicationConfiguration';
+import { UserUrl, GetUserUrl, DeleteUserUrl, LoginUserUrl, GetUserByIdUrl, UpdateByIdUrl } from '../ApplicationConfiguration/ApplicationConfiguration';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +30,13 @@ export class TestingService {
     return this._HttpClient.delete(DeleteUserUrl+`${_Params}`);
   }
 
+  GetUserById(_Params:any){
+    return this._HttpClient.get(GetUserByIdUrl+`${_Params}`);
+  }
+
+  UpdateUserById(_Payload:any){
+    return this._HttpClient.post(UpdateByIdUrl+`${_Payload._Id}`,_Payload);
+  }
   
 
   SaveLogInDataToLocalStorage(DataComingFromBackEnd: any) {

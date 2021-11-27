@@ -171,10 +171,11 @@ const GetUserById = async (req, res) => {
 const UpdateById = async (req, res) => {
     try {
         const _GetUserId = req.params._UserId;
-        const _GetUserName = req.body.Name;
+        const _GetUserName = req.body.NewName;
+        const _GetUserAddress = req.body.NewAddress;
         const _UpdateUserById = await _TestingAndLearningCollection.updateOne(
             { _id: _GetUserId },
-            { Name: _GetUserName }
+            { $set: { Name:_GetUserName, Address: _GetUserAddress } }
         );
         if (_UpdateUserById.modifiedCount === 1) {
             res.json({

@@ -17,7 +17,7 @@
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <div class="col" *ngFor="let data of _UserDataArray">
           <div class="card shadow-sm">
-            <img [src]="data.ImageUrl" alt="">
+            <img [src]="_BaseUrl+data.ImageUrl" alt="">
 
             <div class="card-body">
               <p class="card-text">{{data.Name}}</p>
@@ -26,6 +26,14 @@
                   <button  class="btn btn-sm btn-outline-secondary">{{data.MobileNumber}}</button>
                   <button  class="btn btn-sm btn-outline-secondary">{{data.Address}}</button>
                   <button class="btn btn-outline-danger" (click)=DeleteCard(data._id)>Delete Card</button>
+                  <br>
+                  <div class="row">
+                    <div class="col">
+                      <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="GetCardId(data._id)">
+                        Update Card
+                      </button>
+                    </div>
+                  </div>
                 </div> 
                 <small class="text-muted">9 mins</small>
               </div>
@@ -35,3 +43,38 @@
       </div>
     </div>
   </div>
+
+
+
+
+
+  <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="_UpdateFrom" (ngSubmit)="UpdateForm()">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Old Name</label>
+            <input type="text" class="form-control"  formControlName="NewName" [placeholder]="_OldName">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Old Address</label>
+            <input type="text"  class="form-control" formControlName="NewAddress" [placeholder]="_OldAddress">
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Submit</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
