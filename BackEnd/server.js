@@ -58,7 +58,6 @@ app.use('/ChatManagement',_ChatManagementRoute);
 //Serving Front End From Express Server
 app.get('*',(req,res)=>{
     res.sendFile(path.join(__dirname+'/FrontEnd/index.html'));
-    console.log(__dirname);
 });
 //Serving Front End From Express Server
 
