@@ -82,6 +82,7 @@ app.use((error,req,res,next)=>{
 //Starting the app
 app.listen(PORT,()=>{
     console.log(`Your app is running on ${PORT}`);
+    console.log('hi there');
 
 });
 
