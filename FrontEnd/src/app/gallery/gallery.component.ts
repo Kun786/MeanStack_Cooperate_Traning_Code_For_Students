@@ -56,6 +56,7 @@ export class GalleryComponent implements OnInit {
     const _GetUpdateFormValue = this._UpdateFrom.value;
     this._TestingService.UpdateUserById(_GetUpdateFormValue).subscribe((DataComingFromBackEnd) => {
       console.log(DataComingFromBackEnd);
+      this.ngOnInit();
     })
 
   }
